@@ -35,3 +35,7 @@ The agents write and run Python code on your computer. Run it only where you acc
 | `tests/` | Tests (`python -m unittest tests.test_spatial_conditions`) |
 
 The map interpreter needs a `mapper/` folder that is not part of this repository.
+
+## License
+
+[GPL-3.0](LICENSE)

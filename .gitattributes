@@ -1,0 +1,5 @@
+# Store text with LF so Windows and Linux copies agree.
+* text=auto
+*.bat text eol=crlf
+# Its fingerprint is recorded with every run.
+spatial_kb/*.yaml text eol=lf

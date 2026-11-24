@@ -351,7 +351,8 @@ class TrackUsageTests(unittest.TestCase):
         sys.modules["agents.data_agent"] = pkg
         self.ns = load_functions(
             "WebUI/app.py",
-            {"_usage_call_row", "_usage_run_total", "track_usage", "usage_summary_event"},
+            {"_usage_call_row", "_usage_run_total", "track_usage", "usage_summary_event",
+             "_usage_baseline_totals"},
             {"_get_phase": _get_phase,
              # Module-level constant the loaded functions close over.
              "_USAGE_CALL_FIELDS": _module_constant("WebUI/app.py", "_USAGE_CALL_FIELDS")})

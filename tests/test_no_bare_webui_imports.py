@@ -55,6 +55,7 @@ class NoBareWebUIImports(unittest.TestCase):
                         problems.append(f"{path.relative_to(ROOT)}:{node.lineno} {name}")
         self.assertEqual(problems, [])
 
+    @unittest.skipUnless((ROOT / "pythonanywhere_wsgi.py").exists(), "local deployment file")
     def test_wsgi_puts_only_the_project_root_on_the_path(self):
         # The premise of the test above: if this changes, revisit it.
         wsgi = (ROOT / "pythonanywhere_wsgi.py").read_text(encoding="utf-8")

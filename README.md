@@ -1,7 +1,7 @@
 # GIS Co-Scientist
 
 An agent that takes a geospatial research question from data to a drafted manuscript, with checkpoints where
-you review and edit its plan. See [RESEARCH_MODE_WORKFLOW.md](RESEARCH_MODE_WORKFLOW.md) for how a run works.
+you review and edit its plan. See [the Research mode workflow](docs/RESEARCH_MODE_WORKFLOW.md) for how a run works.
 
 ## Run it
 

@@ -182,14 +182,18 @@ class HandbookStudioRunnerTests(unittest.TestCase):
         self.assertEqual(completed["status"], "complete")
         self.assertEqual(completed["test_result"]["status"], "passed")
         self.assertTrue(completed["test_result"]["downloaded_files"])
-        semantic = completed["test_result"]["semantic_validation"]
-        self.assertTrue(semantic["task_completed"])
-        self.assertEqual(semantic["parameter_correctness"], "pass")
-        self.assertEqual(
-            completed["test_runs"][-1]["result"]["semantic_validation"],
-            semantic)
+        # The test only judges whether real data came back. Whether it satisfies
+        # the task is a separate step the user starts (run_validation_stream).
+        self.assertNotIn("semantic_validation", completed["test_result"])
 
-    def test_semantic_validation_failure_marks_outcome_failed(self):
+    def test_validation_records_a_pass(self):
+        events, run = self._test_then_validate(fake_evaluate_retrieval_result)
+        self.assertTrue(events[-1]["task_completed"])
+        self.assertTrue(run["result"]["semantic_validation"]["task_completed"])
+        self.assertEqual(
+            run["result"]["semantic_validation"]["parameter_correctness"], "pass")
+
+    def test_semantic_validation_failure_is_recorded(self):
         user_id = "f" * 64
 
         def fake_evaluate_not_completed(*args, **kwargs):
@@ -201,6 +205,14 @@ class HandbookStudioRunnerTests(unittest.TestCase):
             })
             return result
 
+        events, run = self._test_then_validate(fake_evaluate_not_completed)
+        self.assertFalse(events[-1]["task_completed"])
+        self.assertFalse(run["result"]["semantic_validation"]["task_completed"])
+        # Validation is recorded beside the retrieval outcome, not over it.
+        self.assertEqual(run["outcome"], "passed")
+
+    def _test_then_validate(self, evaluate):
+        user_id = "f" * 64
         with tempfile.TemporaryDirectory(dir=os.getcwd()) as temp_root:
             store_root = os.path.join(temp_root, "sessions")
             output_root = os.path.join(temp_root, "outputs")
@@ -210,8 +222,8 @@ class HandbookStudioRunnerTests(unittest.TestCase):
                         runner, "DataRetrieverAgent", FakeRetriever), \
                     mock.patch.object(
                         handbook_generator, "evaluate_retrieval_result",
-                        side_effect=fake_evaluate_not_completed):
-                session = store.new_session("Test phase — semantic failure")
+                        side_effect=evaluate):
+                session = store.new_session("Test then validate")
                 session.update({
                     "source_name": "OpenTopography",
                     "retrieval_task": "Download a small area as GeoJSON.",
@@ -225,16 +237,14 @@ class HandbookStudioRunnerTests(unittest.TestCase):
                     "access_mechanism": "rest",
                 })
                 saved = store.save_session(user_id, session)
-                events, _ = exhaust(runner.run_test_stream(
+                exhaust(runner.run_test_stream(
                     user_id, "sk-test", saved["id"]))
-                completed = store.get_session(user_id, saved["id"])
-
-        terminal = events[-1]
-        self.assertEqual(terminal["outcome"], "failed")
-        self.assertEqual(
-            completed["test_result"]["status"], "failed_validation")
-        self.assertFalse(
-            completed["test_result"]["semantic_validation"]["task_completed"])
+                run = store.get_session(user_id, saved["id"])["test_runs"][-1]
+                events, _ = exhaust(runner.run_validation_stream(
+                    user_id, "sk-test", saved["id"], run["id"], "llm"))
+                self.assertEqual(events[-1]["type"], "validation_finished", events[-1])
+                run = store.get_session(user_id, saved["id"])["test_runs"][-1]
+        return events, run
 
 
 if __name__ == "__main__":

@@ -26,8 +26,9 @@ EXAMPLE = "import requests\nprint(requests.get('https://example').status_code)\n
 # re-measured when the schema-vs-coverage requirement was added to the
 # download prompt (the one that forbids raising DATA_UNAVAILABLE over a
 # missing column/field name -- the year/variable may be implicit in a
-# release-year or wide-format dataset).
-TREATMENT_LENGTH = 8706
+# release-year or wide-format dataset), then the one-output-file and layer-ID
+# rules (2026-11-11), then the layer-ID rule saying "documentation".
+TREATMENT_LENGTH = 9887
 
 
 def _stub():

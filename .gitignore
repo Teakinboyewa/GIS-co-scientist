@@ -163,3 +163,8 @@ benchmark/runs/
 
 # Internal notes
 /TODO.md
+
+# Local helper scripts
+/run_webui.bat
+/pythonanywhere_wsgi.py
+/verify_keys.py

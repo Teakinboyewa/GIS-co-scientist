@@ -44,11 +44,6 @@ The User Manual is available [here](https://autonomousgis-agsi.github.io/AGSI/us
 
 # Demonstration
 
-### Introduction
-<a href="https://www.youtube.com/watch?v=oyf4I1VRlLU" target="_blank">
-  <img src="https://img.youtube.com/vi/oyf4I1VRlLU/0.jpg" alt="Video: Introduction to GIS Co-Scientist" width="800">
-</a>
-
 ### Data Retrieval mode
 <a href="https://www.youtube.com/watch?v=TltGDALyw88" target="_blank">
   <img src="https://img.youtube.com/vi/TltGDALyw88/0.jpg" alt="Video: Data Retrieval mode, Example 1" width="800">
@@ -65,20 +60,3 @@ The User Manual is available [here](https://autonomousgis-agsi.github.io/AGSI/us
 </a>
 
 Find more examples in the [video playlist](https://youtube.com/playlist?list=PL6ON3gdLloDE_aLyFjj4X7EYKDDdAfJi2) and on the [project page](https://autonomousgis-agsi.github.io/AGSI/#demos).
-
-# Citation
-
-```bibtex
-@article{akinboyewa2026giscoscientist,
-  title   = {{GIS Co-Scientist}: a human-{AI} collaborative framework for autonomous geospatial scientific inquiry},
-  author  = {Akinboyewa, Temitope and Li, Zhenlong},
-  journal = {Geo-spatial Information Science},
-  year    = {2026},
-  pages   = {1--22},
-  doi     = {10.1080/10095020.2026.2764024}
-}
-```
-
-# License
-
-[GPL-3.0](LICENSE)

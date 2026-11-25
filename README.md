@@ -11,8 +11,6 @@ Temitope Akinboyewa and Zhenlong Li. 2026. *"GIS Co-Scientist: a human-AI collab
 > [!IMPORTANT]
 > **Case studies:** The research questions, conversation records, workflows, figures, and manuscripts of the case studies are available on the [project page](https://autonomousgis-agsi.github.io/AGSI/#case-studies).
 
-Project page: https://autonomousgis-agsi.github.io/AGSI/
-
 ![GIS Co-Scientist framework: a human in the loop guides a layer of specialized agents, backed by a reproducibility layer](docs/images/framework.jpg)
 
 # Working modes

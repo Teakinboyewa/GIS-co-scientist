@@ -2,9 +2,17 @@
 
 <img src="WebUI/icon/GIS-Coscientist_logo.png" alt="GIS Co-Scientist logo" width="110" align="right">
 
-GIS Co-Scientist is a multi-agent framework for autonomous geospatial scientific inquiry. It takes a geospatial research question from data to a drafted manuscript through a single conversational interface, and pauses along the way so you can review and edit its work.
+GIS Co-Scientist is a human-AI collaborative framework that supports geospatial scientific inquiry. Given a research question, it:
 
-Specialized agents understand the question, retrieve geospatial data, plan the analysis, write and run the code, interpret the results, and draft the report. For more details on the framework, refer to the published article:
+1. **Plans** the analytical steps
+2. **Executes** the steps
+3. **Generates** a first draft manuscript
+
+**Human in the loop:** You stay in control. GIS Co-Scientist pauses at key stages so you can review, edit, and approve its work before it continues.
+
+The same interface also supports standalone **data retrieval** and **spatial analysis**.
+
+For more details, refer to the published article:
 
 Temitope Akinboyewa and Zhenlong Li. 2026. *"GIS Co-Scientist: a human-AI collaborative framework for autonomous geospatial scientific inquiry."* Geo-spatial Information Science. https://doi.org/10.1080/10095020.2026.2764024
 
@@ -15,9 +23,9 @@ Temitope Akinboyewa and Zhenlong Li. 2026. *"GIS Co-Scientist: a human-AI collab
 
 # Working modes
 
-- **Data Retrieval:** finds and downloads geospatial data from a request in plain language.
-- **Spatial Analysis:** plans a geoprocessing workflow, writes the code, and runs it.
-- **Research:** runs the full workflow, from research question to drafted manuscript.
+- **Research:** goes from a research question to a first draft manuscript.
+- **Data Retrieval:** finds and downloads geospatial data from a plain-language request.
+- **Spatial Analysis:** plans and runs a geoprocessing workflow.
 - **Chat:** answers GIS questions.
 
 # Getting started

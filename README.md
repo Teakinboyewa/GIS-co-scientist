@@ -2,15 +2,7 @@
 
 <img src="WebUI/icon/GIS-Coscientist_logo.png" alt="GIS Co-Scientist logo" width="110" align="right">
 
-GIS Co-Scientist is a human-AI collaborative framework that supports geospatial scientific inquiry. Given a research question, it:
-
-1. **Plans** the analytical steps
-2. **Executes** the steps
-3. **Generates** a first draft manuscript
-
-**Human in the loop:** You stay in control. GIS Co-Scientist pauses at key stages so you can review, edit, and approve its work before it continues.
-
-The same interface also supports standalone **data retrieval** and **spatial analysis**.
+GIS Co-Scientist is a human-AI collaborative framework that supports geospatial scientific inquiry. It takes a research question, **plans** the analytical steps, **executes** them, and **generates a first draft manuscript**. With a **human in the loop**, it pauses at key stages so you can review, edit, and approve its work before it continues. The same interface also supports standalone **data retrieval** and **spatial analysis**.
 
 For more details, refer to the published article:
 

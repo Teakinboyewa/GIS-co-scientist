@@ -42,17 +42,17 @@ The User Manual is available [here](https://autonomousgis-agsi.github.io/AGSI/us
 
 ### Data Retrieval mode
 <a href="https://www.youtube.com/watch?v=TltGDALyw88" target="_blank">
-  <img src="https://img.youtube.com/vi/TltGDALyw88/0.jpg" alt="Video: Data Retrieval mode, Example 1" width="800">
+  <img src="docs/images/demo-data-retrieval.jpg" alt="Video: Data Retrieval mode, Example 1" width="800">
 </a>
 
 ### Spatial Analysis mode
 <a href="https://www.youtube.com/watch?v=Ue53TqW_Su0" target="_blank">
-  <img src="https://img.youtube.com/vi/Ue53TqW_Su0/0.jpg" alt="Video: Spatial Analysis mode, Example 1" width="800">
+  <img src="docs/images/demo-spatial-analysis.jpg" alt="Video: Spatial Analysis mode, Example 1" width="800">
 </a>
 
 ### Research mode
 <a href="https://www.youtube.com/watch?v=Ib5p8sdtxGk" target="_blank">
-  <img src="https://img.youtube.com/vi/Ib5p8sdtxGk/0.jpg" alt="Video: Research mode, Example 1" width="800">
+  <img src="docs/images/demo-research.jpg" alt="Video: Research mode, Example 1" width="800">
 </a>
 
 Find more examples in the [video playlist](https://youtube.com/playlist?list=PL6ON3gdLloDE_aLyFjj4X7EYKDDdAfJi2) and on the [project page](https://autonomousgis-agsi.github.io/AGSI/#demos).

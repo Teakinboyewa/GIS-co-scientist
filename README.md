@@ -2,108 +2,71 @@
 
 <img src="WebUI/icon/GIS-Coscientist_logo.png" alt="GIS Co-Scientist logo" width="110" align="right">
 
-GIS Co-Scientist is a multi-agent framework for autonomous geospatial scientific inquiry. It takes a research question
-from data to a drafted manuscript, and pauses so you can review and edit its work along the way.
+GIS Co-Scientist is a multi-agent framework for autonomous geospatial scientific inquiry. It takes a geospatial research question from data to a drafted manuscript through a single conversational interface, and pauses along the way so you can review and edit its work.
 
-This repository holds the source code of the web application. To use GIS Co-Scientist without setting up the code:
+Specialized agents understand the question, retrieve geospatial data, plan the analysis, write and run the code, interpret the results, and draft the report. For more details on the framework, refer to the published article:
 
-- **Desktop app (recommended):** [download for Windows or macOS](https://autonomousgis-agsi.github.io/AGSI/desktop-install.html)
-- **WebUI:** [www.gis-coscientist.online](https://www.gis-coscientist.online/)
+Temitope Akinboyewa and Zhenlong Li. 2026. *"GIS Co-Scientist: a human-AI collaborative framework for autonomous geospatial scientific inquiry."* Geo-spatial Information Science. https://doi.org/10.1080/10095020.2026.2764024
 
-[Project page](https://autonomousgis-agsi.github.io/AGSI/) ·
-[User manual](https://autonomousgis-agsi.github.io/AGSI/user_manual) ·
-[Paper](https://doi.org/10.1080/10095020.2026.2764024) ·
-[Video demos](https://youtube.com/playlist?list=PL6ON3gdLloDE_aLyFjj4X7EYKDDdAfJi2)
+> [!IMPORTANT]
+> **Case studies:** The research questions, conversation records, workflows, figures, and manuscripts of the case studies are available on the [project page](https://autonomousgis-agsi.github.io/AGSI/#case-studies).
 
-## What it does
+Project page: https://autonomousgis-agsi.github.io/AGSI/
 
-| Mode | What it does |
-|---|---|
-| **Data Retrieval** | Finds and downloads geospatial data from a request in plain language |
-| **Spatial Analysis** | Plans a geoprocessing workflow, writes the code, and runs it |
-| **Research** | Runs the full workflow, from question to drafted manuscript |
-| **Chat** | Answers GIS questions |
+![GIS Co-Scientist framework: a human in the loop guides a layer of specialized agents, backed by a reproducibility layer](docs/images/framework.jpg)
 
-Two versions of Research mode are included for comparison: **Research (no planning)** and **Single Agent**.
+# Working modes
 
-## Run from source
+- **Data Retrieval:** finds and downloads geospatial data from a request in plain language.
+- **Spatial Analysis:** plans a geoprocessing workflow, writes the code, and runs it.
+- **Research:** runs the full workflow, from research question to drafted manuscript.
+- **Chat:** answers GIS questions.
 
-You need Python 3.13 (the version it is developed with) and an [OpenAI API key](https://platform.openai.com/api-keys).
+# Getting started
 
-```
-git clone https://github.com/Teakinboyewa/GIS-co-scientist.git
-cd GIS-co-scientist
-python -m venv .venv
-.venv\Scripts\activate            # macOS/Linux: source .venv/bin/activate
-pip install -r requirements.txt
-python WebUI/app.py
-```
+## Desktop app (recommended)
 
-Open http://127.0.0.1:4041/ and add your key in **Settings**. A [GIBD key](https://www.gibd.online) also works, but only
-as a backup for trying out the system.
+- [Download the installer](https://autonomousgis-agsi.github.io/AGSI/desktop-install.html) for Windows or macOS and follow the steps on the page.
+- Open the app and add your OpenAI API key in `Settings`.
 
-> [!WARNING]
-> The agents write Python code and run it on your computer, with your permissions. Run the app only where you accept that.
+## WebUI
 
-### Add data sources
+- Open [www.gis-coscientist.online](https://www.gis-coscientist.online/) in your browser.
+- Add your OpenAI API key in `Settings`.
 
-The Data Retrieval agent follows *handbooks*, one per data source, and this repository does not include any. To add the
-shared ones, get the [data source catalog](https://github.com/Teakinboyewa/GIS-co-scientist-catalog), copy its files
-into these folders (create them if needed), and restart the app:
+## API key
 
-| From the catalog | To |
-|---|---|
-| `handbooks/*.toml` | `agents/data_agent/DataRetriever_Handbooks/Handbooks/` |
-| `keys/*.keys` | `agents/data_agent/DataRetriever_Handbooks/Keys/` |
+Use your own [OpenAI API key](https://platform.openai.com/api-keys). A [GIBD key](https://www.gibd.online) is only a backup if you want to test or try out the system.
 
-The key files hold only key names. Enter your own keys in **Settings → Data Source Keys**. You can also add your own
-sources in the app, under **Data Sources → My Sources**.
+# User Manual
 
-## Configuration
+The User Manual is available [here](https://autonomousgis-agsi.github.io/AGSI/user_manual).
 
-| Variable | Default | Meaning |
-|---|---|---|
-| `AGM_HOST` | `127.0.0.1` | Address to listen on. `0.0.0.0` lets other computers connect. |
-| `AGM_PORT` | `4041` | Port |
-| `AGM_DEBUG` | off | `1` turns on Flask's debugger. Never use it on a shared network. |
+# Demonstration
 
-The model and reasoning effort of each language-model call are set in [`utils/llm_models.toml`](utils/llm_models.toml).
-Restart the app after editing it.
+### Introduction
+<a href="https://www.youtube.com/watch?v=oyf4I1VRlLU" target="_blank">
+  <img src="https://img.youtube.com/vi/oyf4I1VRlLU/0.jpg" alt="Video: Introduction to GIS Co-Scientist" width="800">
+</a>
 
-## Repository layout
+### Data Retrieval mode
+<a href="https://www.youtube.com/watch?v=TltGDALyw88" target="_blank">
+  <img src="https://img.youtube.com/vi/TltGDALyw88/0.jpg" alt="Video: Data Retrieval mode, Example 1" width="800">
+</a>
 
-| Path | Contents |
-|---|---|
-| `WebUI/` | Flask server and web page |
-| `agents/` | The agents: question understanding, data, planning and execution, modeling, result analysis, reporting |
-| `agents/spatial_reasoning/`, `spatial_kb/` | Spatial reasoning method and its knowledge base |
-| `skills/` | Analysis guides the agents use |
-| `utils/` | Shared helpers and model settings |
-| `docs/` | [How a Research mode run works](docs/RESEARCH_MODE_WORKFLOW.md) |
-| `tests/` | Tests |
+### Spatial Analysis mode
+<a href="https://www.youtube.com/watch?v=Ue53TqW_Su0" target="_blank">
+  <img src="https://img.youtube.com/vi/Ue53TqW_Su0/0.jpg" alt="Video: Spatial Analysis mode, Example 1" width="800">
+</a>
 
-The map interpreter page needs a `mapper/` folder that is not part of this repository.
+### Research mode
+<a href="https://www.youtube.com/watch?v=Ib5p8sdtxGk" target="_blank">
+  <img src="https://img.youtube.com/vi/Ib5p8sdtxGk/0.jpg" alt="Video: Research mode, Example 1" width="800">
+</a>
 
-## Tests
+Find more examples in the [video playlist](https://youtube.com/playlist?list=PL6ON3gdLloDE_aLyFjj4X7EYKDDdAfJi2) and on the [project page](https://autonomousgis-agsi.github.io/AGSI/#demos).
 
-Run one test module:
-
-```
-python -m unittest tests.test_spatial_conditions
-```
-
-## Related repositories
-
-| Repository | Contents |
-|---|---|
-| [GIS-co-scientist-desktop](https://github.com/Teakinboyewa/GIS-co-scientist-desktop) | Desktop app |
-| [GIS-co-scientist-catalog](https://github.com/Teakinboyewa/GIS-co-scientist-catalog) | Shared data sources |
-| [AGSI](https://github.com/AutonomousGIS-AGSI/AGSI) | Project page, user manual, and case studies |
-
-## Citation
-
-> Akinboyewa, T., & Li, Z. (2026). GIS Co-Scientist: a human-AI collaborative framework for autonomous geospatial
-> scientific inquiry. *Geo-spatial Information Science*, 1–22. https://doi.org/10.1080/10095020.2026.2764024
+# Citation
 
 ```bibtex
 @article{akinboyewa2026giscoscientist,
@@ -116,6 +79,6 @@ python -m unittest tests.test_spatial_conditions
 }
 ```
 
-## License
+# License
 
 [GPL-3.0](LICENSE)

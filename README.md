@@ -32,7 +32,7 @@ Temitope Akinboyewa and Zhenlong Li. 2026. *"GIS Co-Scientist: a human-AI collab
 
 ## API key
 
-Use your own [OpenAI API key](https://platform.openai.com/api-keys). A [GIBD key](https://www.gibd.online) is only a backup if you want to test or try out the system.
+Use your own [OpenAI API key](https://platform.openai.com/api-keys). If you don't have one, you can apply for a [GIBD key](https://www.gibd.online) to explore and test the system.
 
 # User Manual
 
